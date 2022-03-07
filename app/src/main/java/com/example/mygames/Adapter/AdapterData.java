@@ -15,22 +15,17 @@ import com.example.mygames.R;
 import java.util.List;
 
 public class AdapterData extends RecyclerView.Adapter<AdapterData.HolderData>{
-    private Context ctx;
     private List<DataModel> modelList;
 
-    public AdapterData(Context ctx, List<DataModel> modelList) {
-        this.ctx = ctx;
-        this.modelList = modelList;
-    }
     public AdapterData(List<DataModel> modelList){
         this.modelList = modelList;
     }
+
     @NonNull
     @Override
     public HolderData onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View layout = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item,parent,false);
-        HolderData holder = new HolderData(layout);
-        return holder;
+        return new HolderData(layout);
     }
 
     @Override
@@ -49,8 +44,7 @@ public class AdapterData extends RecyclerView.Adapter<AdapterData.HolderData>{
         return modelList.size();
     }
 
-
-    public class HolderData extends RecyclerView.ViewHolder {
+    public static class HolderData extends RecyclerView.ViewHolder {
         TextView tvid,tvnama,tvgenre,tvplatform,tvpembuat;
 
         public HolderData(@NonNull View itemView) {
